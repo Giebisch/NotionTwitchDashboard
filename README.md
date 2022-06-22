@@ -5,7 +5,7 @@ This lightweight application automatically updates your notion page with infos a
 ## Example result
 
 <p float="center">
-    <img src="docs/example_page.png" width=250px>
+    <img src="docs/example_page.png" width=450px>
 </p>
 
 ## Usage 
