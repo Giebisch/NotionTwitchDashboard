@@ -1,12 +1,9 @@
 # workflow name
-name: Generate release-artifacts
+name: Generate dist files
 
 # on events
 on:
-  release:
-    types: 
-        - created
-
+  push
 # workflow tasks
 jobs:
   generate:
@@ -23,3 +20,8 @@ jobs:
             name: 'NotionTwitchDashboard'
             compress: 'false'
             dest: 'dist'
+    - name: capture build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Artifacts
+        path: build/libs/
