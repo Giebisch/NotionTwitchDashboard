@@ -1,25 +1,8 @@
-name: Go
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.18
-
-    - name: Build
-      run: go build -v ./...
-
-    - name: Test
-      run: go test -v ./...
+- name: go-cross-build
+  uses: thatisuday/go-cross-build@v1.1.0
+  with:
+    platforms: linux/amd64, darwin/amd64, windows/amd64
+    package: main
+    compress: # optional, default is false
+    name: "NotionTwitchDashboard"
+    dest: # optional, default is build
