@@ -10,7 +10,7 @@ This lightweight application automatically updates your notion page with infos a
 
 ## Usage 
 
-Download the full application under `build/` or build it yourself.
+Download the full application under `Releases` to your right or build it yourself.
 
 Run it once to get a config file and add your credentials.
 Twitch channels must be comma-separated.
