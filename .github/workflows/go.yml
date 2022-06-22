@@ -1,8 +1,0 @@
-- name: go-cross-build
-  uses: thatisuday/go-cross-build@v1.1.0
-  with:
-    platforms: linux/amd64, darwin/amd64, windows/amd64
-    package: main
-    compress: # optional, default is false
-    name: "NotionTwitchDashboard"
-    dest: # optional, default is build
