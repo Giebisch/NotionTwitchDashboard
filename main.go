@@ -14,6 +14,7 @@ type Config struct {
 	client_secret   string
 	twitch_channels string
 	notion_secret   string
+	notion_page_id  string
 }
 
 func initialize() (*Config, error) {
@@ -26,11 +27,13 @@ func initialize() (*Config, error) {
 		}
 		defer file.Close()
 
-		_, _ = file.WriteString("CLIENT_ID=\n")
-		_, _ = file.WriteString("CLIENT_SECRET=\n")
-		_, _ = file.WriteString("TWITCH_CHANNELS=\n")
-		_, _ = file.WriteString("NOTION_SECRET=\n")
-
+		env_vars := `CLIENT_ID=
+CLIENT_SECRET=
+TWITCH_CHANNELS=
+NOTION_SECRET=
+NOTION_PAGE_ID=
+`
+		file.WriteString(env_vars)
 		fmt.Println("Please add credentials in 'config.txt' first.")
 		return nil, errors.New("no credentials")
 	}
@@ -52,6 +55,7 @@ func initialize() (*Config, error) {
 		client_secret:   env_vars[1],
 		twitch_channels: env_vars[2],
 		notion_secret:   env_vars[3],
+		notion_page_id:  env_vars[4],
 	}
 	return &config, nil
 }
@@ -59,7 +63,7 @@ func initialize() (*Config, error) {
 func main() {
 	config, err := initialize()
 	if err != nil {
-		panic(err)
+		return
 	}
 
 	var wg = &sync.WaitGroup{}

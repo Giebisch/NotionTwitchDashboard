@@ -52,8 +52,7 @@ func httpRequestWithBody(config *Config, requestType string, url string, content
 }
 
 func getPageChildren(config *Config) PageChildren {
-	page_id := "9dc09303fd164b1d95e9a116c347160c"
-	url := "https://api.notion.com/v1/blocks/" + page_id + "/children"
+	url := "https://api.notion.com/v1/blocks/" + config.notion_page_id + "/children"
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header = http.Header{
@@ -133,7 +132,7 @@ func Notion(config *Config, streams *StreamInfoAnswer, users *UserInfoAnswer) {
 	}
 	// add needed blocks
 	for numberChildren < 2*len(streams.Stream) {
-		url := "https://api.notion.com/v1/blocks/" + "9dc09303fd164b1d95e9a116c347160c" + "/children"
+		url := "https://api.notion.com/v1/blocks/" + config.notion_page_id + "/children"
 		err := httpRequestWithBody(config, http.MethodPatch, url, `{
 			"children": [
 				{
@@ -148,7 +147,7 @@ func Notion(config *Config, streams *StreamInfoAnswer, users *UserInfoAnswer) {
 					"type":		"image",
 					"image": {
 						"external": {
-							"url": "https://static-cdn.jtvnw.net/ttv-boxart/26936-285x380.jpg"
+							"url": "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png"
 						}
 					}
 				}
